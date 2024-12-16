@@ -1,0 +1,26 @@
+<div id="chat">
+    <h3>Service Client</h3>
+    <form (ngSubmit)="handleFormSubmit()">
+        <div id="chat-content">
+            <!-- Dropdown for selecting communication mode -->
+            <label for="communicationMode">Mode de communication </label>
+            <select [(ngModel)]="selectedMode" name="communicationMode" id="communicationMode" required>
+                <option value="visio">Visio</option>
+                <option value="chat">Chat</option>
+            </select> <br><br>
+
+            <!-- Chat messages section -->
+            <div class="messages" *ngFor="let message of messages">
+                <strong>{{ message?.utilisateur?.nom }}:</strong> {{ message?.contenu }}<br>
+                <strong>Type:</strong> {{ message?.type }}
+            </div>
+        </div>
+        <!-- Input for new message -->
+        <div id="chat-button">
+            <input [(ngModel)]="messageContent" name="messageContent" placeholder="Votre message" required />
+            <button type="button" (click)="sendMessage()">Envoyer</button>
+        </div>
+
+
+    </form>
+</div>
