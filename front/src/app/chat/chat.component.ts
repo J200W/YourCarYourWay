@@ -41,6 +41,9 @@ export class ChatComponent implements OnInit{
   ngOnInit(): void {
     this.chatService.getMessages().subscribe((messages) => {
       this.messages = messages;
+    },
+    (error) => {
+      this.logout();
     });
   }
 
@@ -56,7 +59,6 @@ export class ChatComponent implements OnInit{
       };
       this.messageContent = '';
       this.chatService.sendMessage(message).subscribe((response) => {
-        alert('Message envoyé avec succès !');
         location.reload();
       });
     }
