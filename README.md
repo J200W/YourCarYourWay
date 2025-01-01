@@ -56,5 +56,6 @@ Actuellement, les différentes régions utilisent des applications distinctes, e
 ### **Étapes d'Installation**  
 1. Clonez le dépôt :  
    ```bash
-   git clone https://github.com/YourCarYourWay/project-repo.git
+   git clone https://github.com/J200W/YourCarYourWay.git
+   ```
    cd project-repo
