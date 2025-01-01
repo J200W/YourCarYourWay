@@ -1,4 +1,4 @@
-# Your Car Your Way - Unified Web Application  
+# Your Car Your Way - Web Application  
 
 ## **Description**  
 Your Car Your Way (YCYW) est une entreprise leader dans la location de voitures, présente sur les marchés européen et américain. Ce projet vise à développer une **application web unifiée** permettant aux clients du monde entier de gérer leurs locations via une plateforme unique.  
