@@ -1,5 +1,7 @@
 package com.example.ycyw.dtos;
 
+import java.time.LocalDateTime;
+
 import com.example.ycyw.models.Utilisateur;
 
 import lombok.AllArgsConstructor;
@@ -11,7 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MessageDTO {
     private String contenu;
-    private String type;
-    private String date;
+    public LocalDateTime date = LocalDateTime.now();
     private Utilisateur utilisateur;
 }

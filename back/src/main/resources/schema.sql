@@ -1,13 +1,10 @@
--- Initialize the schema for the database
-DROP TABLE IF EXISTS Reservation;
+DROP ALL OBJECTS DELETE FILES;
 
-DROP TABLE IF EXISTS Offre;
-
-DROP TABLE IF EXISTS Vehicule;
-
-DROP TABLE IF EXISTS Message;
-
-DROP TABLE IF EXISTS Utilisateur;
+CREATE TABLE
+    ROLE (
+        id int auto_increment primary key,
+        name varchar(50) not null
+    );
 
 -- Table Utilisateur
 CREATE TABLE
@@ -18,12 +15,20 @@ CREATE TABLE
         mot_de_passe VARCHAR(255) NOT NULL
     );
 
+-- Table USER_ROLE
+CREATE TABLE
+    USER_ROLE (
+        id_user int not null,
+        id_role int not null,
+        FOREIGN KEY (id_user) REFERENCES Utilisateur (ID) ON DELETE CASCADE,
+        FOREIGN KEY (id_role) REFERENCES ROLE (id) ON DELETE CASCADE
+    );
+
 -- Table Message
 CREATE TABLE
     Message (
         ID INT AUTO_INCREMENT PRIMARY KEY,
         contenu TEXT NOT NULL,
-        type VARCHAR(10) NOT NULL,
         utilisateur_id INT NOT NULL,
         date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur (ID) ON DELETE CASCADE

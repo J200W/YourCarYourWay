@@ -1,5 +1,6 @@
 package com.example.ycyw.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,11 @@ public class MessageService {
     public Message sendMessage(MessageDTO messageDto) {
         Message message = new Message();
         message.setContenu(messageDto.getContenu());
-        message.setType(messageDto.getType());
         message.setUtilisateur(messageDto.getUtilisateur());
-        System.out.println("Message saved: " + message);
         return messageRepository.save(message);
     }
 
     public List<Message> getMessages() {
-        return messageRepository.findAllByOrderByDateDesc();
+        return messageRepository.findAllByOrderByDateAsc();
     }
 }

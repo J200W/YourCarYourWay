@@ -1,26 +1,28 @@
 <div id="chat">
-    <h3>Service Client</h3>
-    <form (ngSubmit)="handleFormSubmit()">
+    <h3>Support en ligne</h3>
+    <p>Vous êtes connecté en tant que <strong>{{ this.nom }}</strong></p>
+    <form>
         <div id="chat-content">
-            <!-- Dropdown for selecting communication mode -->
-            <label for="communicationMode">Mode de communication </label>
-            <select [(ngModel)]="selectedMode" name="communicationMode" id="communicationMode" required>
-                <option value="visio">Visio</option>
-                <option value="chat">Chat</option>
-            </select> <br><br>
-
             <!-- Chat messages section -->
             <div class="messages" *ngFor="let message of messages">
-                <strong>{{ message?.utilisateur?.nom }}:</strong> {{ message?.contenu }}<br>
-                <strong>Type:</strong> {{ message?.type }}
+                <div *ngIf="message?.utilisateur?.email === this.email" class="message-right">
+                    <strong>{{ message?.utilisateur?.nom }}</strong>
+                    {{ message?.contenu }}<br>
+                    <p class="message-date">{{ message?.date | date: 'dd/MM/yyyy HH:mm' }}</p>
+                </div>
+                <div *ngIf="message?.utilisateur?.email != this.email" class="message-left">
+                    <strong>{{ message?.utilisateur?.nom }}</strong>
+                    {{ message?.contenu }}<br>
+                    <p class="message-date">{{ message?.date | date: 'dd/MM/yyyy HH:mm' }}</p>
+                </div>
             </div>
         </div>
         <!-- Input for new message -->
         <div id="chat-button">
             <input [(ngModel)]="messageContent" name="messageContent" placeholder="Votre message" required />
             <button type="button" (click)="sendMessage()">Envoyer</button>
+            <button class="danger" type="button" (click)="logout()">Se déconnecter</button>
         </div>
-
-
     </form>
+
 </div>

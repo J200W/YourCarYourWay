@@ -11,5 +11,5 @@ public class YcywApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(YcywApplication.class, args);
 	}
-
+	
 }

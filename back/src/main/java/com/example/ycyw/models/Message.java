@@ -1,5 +1,8 @@
 package com.example.ycyw.models;
 
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,8 +27,10 @@ public class Message {
     private Long id;
 
     private String contenu;
-    private String type;
-    private String date;
+
+    @Column(name = "date")
+    @Builder.Default
+    public LocalDateTime date = LocalDateTime.now();
 
     @OneToOne
     @JoinColumn(name = "utilisateur_id", referencedColumnName = "id")
